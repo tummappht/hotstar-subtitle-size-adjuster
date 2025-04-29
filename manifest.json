@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Hotstar Subtitle Size Adjuster",
+  "version": "1.0",
+  "description": "Change subtitle font size on Hotstar",
+  "permissions": ["scripting", "activeTab"],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "Subtitle Size",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.hotstar.com/*/shows*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+#subtitle-font-modal {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  z-index: 99999;
+  font-family: sans-serif;
+  width: 230px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+#subtitle-font-modal input[type="range"] {
+  width: 100%;
+}

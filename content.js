@@ -60,6 +60,7 @@
       });
       localStorage.setItem("subtitleFontSize", size); // Save the font size
     }
+    console.log("🚀 ~ Call updateSubtitleSize ~ size:", size);
   }
 
   function resetSubtitleSize() {
@@ -128,9 +129,22 @@
       const subtitles = document.querySelectorAll("#video-container span"); // Update this selector if needed
       if (subtitles.length > 0) {
         updateSubtitleSize(currentFontSize);
+        observeSubtitleChanges(); // Start observing subtitle changes
         clearInterval(interval); // Stop checking once subtitles are found
       }
     }, 500); // Check every 500ms
+  }
+
+  function observeSubtitleChanges() {
+    const subtitleContainer = document.querySelector("#video-container"); // Update this selector if needed
+    if (!subtitleContainer) return;
+
+    const observer = new MutationObserver(() => {
+      // Reapply the current font size whenever subtitles are updated
+      updateSubtitleSize(currentFontSize);
+    });
+
+    observer.observe(subtitleContainer, { childList: true, subtree: true });
   }
 
   // Listen for messages from the background script
